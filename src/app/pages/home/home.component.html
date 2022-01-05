@@ -1,0 +1,100 @@
+<section class="formulario-registro">
+    <div class="container">
+        <h1>Student</h1>
+        <form [formGroup]="studentForm" (ngSubmit)="agregarProducto()">
+            <div class="two-columns">
+                <div class="div1sub">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">name</label>
+                        <input type="text" class="form-control" formControlName="firstName" aria-describedby="emailHelp">
+                        <div class="text-danger" *ngIf="studentForm.get('firstName')?.hasError('required')&& studentForm.get('firstName')?.touched">
+                            <span>El nombre firstName <strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">last name</label>
+                        <input type="text" class="form-control" formControlName="lastName" aria-describedby="emailHelp">
+                        <div class="text-danger" *ngIf="studentForm.get('lastName')?.hasError('required')&& studentForm.get('lastName')?.touched">
+                            <span>El nombre lastName <strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idCard" class="form-label">Cedula / ID</label>
+                        <input type="text" class="form-control" formControlName="idCard" aria-describedby="emailHelp">
+                        <div class="text-danger" *ngIf="studentForm.get('idCard')?.hasError('required')&& studentForm.get('idCard')?.touched">
+                            <span>El nombre  idCard<strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bornDate" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" formControlNameformControlName="bornDate" id="bornDate">
+                        <div class="text-danger" *ngIf="studentForm.get('bornDate')?.hasError('required')&& studentForm.get('bornDate')?.touched">
+                            <span>El nombre  bornDate<strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idCard" class="form-label">Teléfono</label>
+                        <input type="text" formControlNameformControlName="phoneNumber" id="phoneNumber">
+                        <div class="text-danger" *ngIf="studentForm.get('phoneNumber')?.hasError('required')&& studentForm.get('phoneNumber')?.touched">
+                            <span>El nombre phoneNumber <strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="div2sub">
+
+                    <div class="mb-3">
+                        <label for="carrer" class="form-label">Carrera</label>
+                        <select formControlName="carrer" id="carrer">
+                    <option value="0">Selec University Carrer</option>
+                    <option value="0">Selec University Carrer</option>
+                    <option value="0">Selec University Carrer</option>
+                    <option value="0">Selec University Carrer</option>
+                    <option value="0">Selec University Carrer</option>
+                  </select>
+                        <div class="text-danger" *ngIf="studentForm.get('carrer')?.hasError('required')&& studentForm.get('carrer')?.touched">
+                            <span>El nombre carrer <strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="university" class="form-label">Universidad</label>
+                        <select formControlName="university" id="university">
+                          <option value="0">Selec University</option>
+                          <option value="0">Selec University</option>
+                          <option value="0">Selec University</option>
+                          <option value="0">Selec University</option>
+                          <option value="0">Selec University</option>
+                        </select>
+                        <div class="text-danger" *ngIf="studentForm.get('university')?.hasError('required')&& studentForm.get('university')?.touched">
+                            <span>El nombre university <strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp">
+                        <div class="text-danger" *ngIf="studentForm.get('university')?.hasError('required')&& studentForm.get('university')?.touched">
+                            <span>El nombre  university<strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="idCard" class="form-label">Dirección</label>
+                        <textarea formControlNameformControlName="homeAddress" id="homeAddress"></textarea>
+                        <div class="text-danger" *ngIf="studentForm.get('homeAddress')?.hasError('required')&& studentForm.get('homeAddress')?.touched">
+                            <span>El nombre  homeAddress<strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <button type="submit" [disabled]="!studentForm.valid" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

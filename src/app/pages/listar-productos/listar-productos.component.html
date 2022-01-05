@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Estudiantes</span>
+                    <button class="btn btn-success float-end" routerLink="['crear-studiante' ]">Nuevo</button>
+
+                    <table *ngIf="listStudents.length > 0" class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Universidad</th>
+                                <th scope="col">Carrera</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let student of listStudents">
+                                <td>{{student.firstName}}</td>
+                                <td>{{student.lastName}}</td>
+                                <td>{{student.email}}</td>
+                                <td>{{student.university}}</td>
+                                <td>{{student.carrer}}</td>
+                                <td>
+                                    <button routerLink="['editar-student', student.id ]" class="btn btn-secondary btn-lg float-start">Edit</button>
+                                    <i class="fas fa-trash text-danger" (click)="eliminarProducto(student.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 class="title" *ngIf="listStudents.length == 0">No hay estudiantes para mostrar</h5>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

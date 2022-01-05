@@ -1,0 +1,22 @@
+.two-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding: 20px;
+}
+
+.div1sub {
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 15px;
+}
+
+.div2sub {
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 15px;
+}
+
+.div3sub {
+    grid-area: 2 / 1 / 3 / 3;
+}
