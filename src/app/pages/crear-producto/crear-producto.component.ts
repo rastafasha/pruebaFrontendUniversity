@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Student } from 'src/app/models/student';
+import { University } from 'src/app/models/university';
+import { UniversidadService } from 'src/app/services/universidad.service';
 import { StudentService } from '../../services/student.service';
 
 @Component({
@@ -15,13 +17,15 @@ export class CrearProductoComponent implements OnInit {
   studentForm: FormGroup;
   titulo = 'Crear Student';
   id: string | null;
+  listUniversity: University[]= [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private studentService: StudentService,
-    private aRoute: ActivatedRoute
+    private aRoute: ActivatedRoute,
+    private universidadService: UniversidadService,
   ) {
     this.studentForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -40,10 +44,17 @@ export class CrearProductoComponent implements OnInit {
 
   ngOnInit(): void {
     this.esEditar();
+    this.getUniversityList();
+  }
+
+  getUniversityList(): void{
+    this.listUniversity = this.universidadService.getUniversitys();
+    console.log(this.listUniversity);
+
   }
 
   agregarProducto(){
-    console.log(this.studentForm);
+    // console.log(this.studentForm);
 
     const student: Student = {
       firstName: this.studentForm.get('firstName')?.value,
@@ -64,6 +75,7 @@ export class CrearProductoComponent implements OnInit {
         data =>{
           this.toastr.info('El producto fue actualizado con exito', 'Producto Actualizado');
         this.router.navigate(['/']);
+        console.log('edit1', this.studentForm.value);
         }
       )
     }else{
@@ -73,6 +85,7 @@ export class CrearProductoComponent implements OnInit {
         data => {
           this.toastr.success('El producto fue registrado con exito', 'Producto Registrado');
           this.router.navigate(['/']);
+          console.log('edit2', this.studentForm.value);
       })
     }
 
@@ -98,6 +111,7 @@ export class CrearProductoComponent implements OnInit {
             carrer: data.carrer,
 
           })
+          console.log('edit3', this.studentForm.value);
         }
       )
     }

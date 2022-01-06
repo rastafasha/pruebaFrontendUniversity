@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ListarProductosComponent } from './listar-productos/listar-productos.component';
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -27,6 +28,7 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppRoutingModule
 
 
   ]

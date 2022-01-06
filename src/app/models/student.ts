@@ -1,5 +1,5 @@
 export class Student {
-  id?: string;
+  id?: number;
     firstName: string;
     lastName: string;
     idCard: string;
@@ -13,6 +13,7 @@ export class Student {
     img?: string;
 
   constructor(
+    id: number,
     firstName: string,
     lastName: string,
     idCard: string,
@@ -25,12 +26,13 @@ export class Student {
     carrer: string,
     img?: string,
   ){
+    this.id = id;
     this.firstName = firstName,
     this.lastName=lastName,
     this.idCard=idCard,
     this.bornDate= bornDate,
     this.phoneNumber= phoneNumber,
-    this.homeAddress=phoneNumber,
+    this.homeAddress=homeAddress,
     this.university=university,
     this.email=email,
     this.password= password,

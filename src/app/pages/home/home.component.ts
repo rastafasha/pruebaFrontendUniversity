@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StudentService } from '../../services/student.service';
 import { Student } from '../../models/student';
+import { UniversidadService } from 'src/app/services/universidad.service';
+import { University } from 'src/app/models/university';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +19,14 @@ export class HomeComponent implements OnInit {
   titulo = 'Crear Carrera y Pensum';
   id: string | null;
 
+  listUniversity: University[]= [];
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private studentService: StudentService,
+    private universidadService: UniversidadService,
 
     private aRoute: ActivatedRoute
   ) {
@@ -42,7 +47,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.esEditar();
+
+    this.getUniversityList();
+
   }
+
+  getUniversityList(): void{
+    this.listUniversity = this.universidadService.getUniversitys();
+    console.log(this.listUniversity);
+
+  }
+
 
   agregarProducto(){
     console.log(this.studentForm);
@@ -65,6 +80,7 @@ export class HomeComponent implements OnInit {
       this.studentService.editarStudent(this.id, student).subscribe(
         data =>{
           this.toastr.info('El producto fue actualizado con exito', 'Producto Actualizado');
+          console.log('edit1', this.studentForm.value);
         this.router.navigate(['/']);
         }
       )
@@ -74,6 +90,7 @@ export class HomeComponent implements OnInit {
       this.studentService.guardarStudent(student).subscribe(
         data => {
           this.toastr.success('El producto fue registrado con exito', 'Producto Registrado');
+          console.log('create', this.studentForm.value);
           this.router.navigate(['/']);
       })
     }
@@ -100,9 +117,14 @@ export class HomeComponent implements OnInit {
             carrer: data.carrer,
 
           })
+          console.log('edit', this.studentForm.value);
         }
       )
     }
   }
+
+
+
+
 
 }

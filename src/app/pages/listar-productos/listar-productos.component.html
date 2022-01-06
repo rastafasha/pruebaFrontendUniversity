@@ -4,7 +4,8 @@
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">Listado de Estudiantes</span>
-                    <button class="btn btn-success float-end" routerLink="['crear-studiante' ]">Nuevo</button>
+                    <button class="btn btn-success float-end" [routerLink]="['/crear-studiante']">Nuevo</button>
+
 
                     <table *ngIf="listStudents.length > 0" class="table table-striped mt-4">
                         <thead>
@@ -25,8 +26,12 @@
                                 <td>{{student.university}}</td>
                                 <td>{{student.carrer}}</td>
                                 <td>
-                                    <button routerLink="['editar-student', student.id ]" class="btn btn-secondary btn-lg float-start">Edit</button>
-                                    <i class="fas fa-trash text-danger" (click)="eliminarProducto(student.id)"></i>
+                                    <button [routerLink]="['/editar-student', student.id ]" class="btn btn-secondary btn-lg float-start">
+                                      <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-lg float-end" (click)="eliminarProducto(student.id)">
+                                      <i class="fa fa-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>

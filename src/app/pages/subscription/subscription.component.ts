@@ -15,6 +15,7 @@ export class SubscriptionComponent implements OnInit {
   universityForm: FormGroup;
   titulo = 'Crear Carrera y Pensum';
   id: string | null;
+  universities= [];
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +41,7 @@ export class SubscriptionComponent implements OnInit {
   agregarProducto(){
     console.log(this.universityForm);
 
-    const product: University = {
+    const university: University = {
       universityName: this.universityForm.get('universityName')?.value,
       infoUniversity: this.universityForm.get('infoUniversity')?.value,
       pensumName: this.universityForm.get('pensumName')?.value,
@@ -49,19 +50,22 @@ export class SubscriptionComponent implements OnInit {
 
     if(this.id !== null){
       //editamos
-      this.universidadService.editarUniversity(this.id, product).subscribe(
+      this.universidadService.editarUniversity(this.id, university).subscribe(
         data =>{
-          this.toastr.info('El producto fue actualizado con exito', 'Producto Actualizado');
+          this.toastr.info('El university fue actualizado con exito', 'university Actualizado');
         this.router.navigate(['/']);
+        console.log('edit1', this.universityForm.value);
+
         }
       )
     }else{
       //creamos
-      console.log(product);
-      this.universidadService.guardarUniversity(product).subscribe(
+      console.log(university);
+      this.universidadService.guardarUniversity(university).subscribe(
         data => {
-          this.toastr.success('El producto fue registrado con exito', 'Producto Registrado');
+          this.toastr.success('El university fue registrado con exito', 'university Registrado');
           this.router.navigate(['/']);
+          console.log('create', this.universityForm.value);
       })
     }
 
@@ -81,6 +85,7 @@ export class SubscriptionComponent implements OnInit {
             infoPensum: data.infoPensum,
 
           })
+          console.log('edit', this.universityForm.value);
         }
       )
     }
